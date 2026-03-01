@@ -121,12 +121,6 @@ void tuh_hid_mount_cb(uint8_t dev_addr, uint8_t instance, uint8_t const *desc_re
 
   tuh_vid_pid_get(dev_addr, &vid, &pid);
 
-/*
-  tone(BUZZER,262,200);
-  delay(100);
-  tone(BUZZER,330,200);
-  delay(100);
-*/
   digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
 
   Serial1.printf("HID device address = %d, instance = %d is mounted\r\n", dev_addr, instance);
@@ -141,13 +135,6 @@ void tuh_hid_mount_cb(uint8_t dev_addr, uint8_t instance, uint8_t const *desc_re
 // HIDインターフェースを持つデバイスがマウント解除されたときに呼び出されます
 void tuh_hid_umount_cb(uint8_t dev_addr, uint8_t instance) {
 
-/*
-  tone(BUZZER,330,200);
-  delay(100);
-  tone(BUZZER,262,200);
-  delay(100);
-*/
-
   digitalWrite(LED_BUILTIN, LOW);  // turn the LED off
 
   Serial1.printf("HID device address = %d, instance = %d is unmounted\r\n", dev_addr, instance);
@@ -160,13 +147,6 @@ void tuh_hid_report_received_cb(uint8_t dev_addr, uint8_t instance, uint8_t cons
   hid_report = report;
   hid_len = len;
   hid_new = true;
-
-/*
-  for (uint16_t i = 0; i < hid_len; i++) {
-    Serial1.printf("0x%02X ", hid_report[i]);
-  }
-  Serial1.println();
-*/
 
   // レポートの受信を要求し続ける
   if (!tuh_hid_receive_report(dev_addr, instance)) {
