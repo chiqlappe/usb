@@ -7,7 +7,7 @@ USB HID BOARD rev1 用
 
 
 #ifndef USE_TINYUSB_HOST
-  #error This example requires usb stack configured as host in "Tools -> USB Stack -> Adafruit TinyUSB Host"
+  #error This program requires usb stack configured as host in "Tools -> USB Stack -> Adafruit TinyUSB Host"
 #endif
 
 // USBHost is defined in usbh_helper.h
@@ -71,15 +71,12 @@ void Interrupt() {
 
   } else if (counter < hid_len) {
 
-      output_value = hid_report[counter++];
+    output_value = hid_report[counter++];
 
-      if (counter == hid_len && !hid_new) {
-        hid_len = 0;
-      }
-
-
+    if (counter == hid_len && !hid_new) {
+      hid_len = 0;
+    }
   }
-
 }
 
 
@@ -91,6 +88,7 @@ void loop() {
   gpio_put_masked(ALL_PINS_MASK, (uint32_t)output_value << BASE_PIN);
 
   Serial1.flush();
+
 }
 
 //---------- Core1 ----------//
