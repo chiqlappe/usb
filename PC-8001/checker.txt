@@ -1,0 +1,19 @@
+10 'initialize PPI
+20 OUT&H8F,&H90
+30 'send CLOCK SYGNAL while CS is HI
+40 OUT&H8E,3
+50 OUT&H8E,1
+60 OUT&H8E,3
+70 'receive report number
+80 N=INP(&H8C)
+90 IF N=0 OR N=&HFF THEN 40
+100 FOR I=1 TO N
+110 'send CLOCK sygnal while CS is LOW
+120 OUT&H8E,2
+130 OUT&H8E,0
+140 OUT&H8E,2
+150 'receive report
+160 D=INP(&H8C):PRINT RIGHT$("0"+HEX$(D),2)+" ";
+170 NEXT I
+180 PRINT
+190 GOTO 40
