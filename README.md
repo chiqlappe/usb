@@ -11,8 +11,9 @@
 - 使用する際には「USB Aメス-マイクロUSB BオスのOTGケーブル」が必要です
 
 ## ラズパイpico用プログラムについて
-- ```usb_hid_board_rev1```プロジェクトをArduino IDEで開いて下さい
+- ```usb_hid_board_rev1```プロジェクトをArduino IDEでコンパイルし、picoに書き込んで下さい
 - ツールメニュー内の ```USB Stack``` を ```Adafruit TinyUSB Host(native)``` にして下さい
+- ライブラリが不足している場合は、エラーメッセージを参考にしてインストールして下さい
    
 ## 仕様
 ### I/Oポート
@@ -79,7 +80,7 @@ A=INP(&H8C)
 ```
 5. データ総数分だけ3~4を繰り返します
 
-### 動作確認用サンプルプログラム
+### 動作確認用サンプルプログラム（N-BASIC）
 
 ```basic
 10 'initialize PPI
